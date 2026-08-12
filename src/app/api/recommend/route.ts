@@ -38,7 +38,6 @@ export async function POST(request) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    // Creazione oggetti ultra-sicura
     const processedPhones = (rawPhones || []).map(p => {
       const scoreObj = Array.isArray(p.phone_scores) ? (p.phone_scores[0] || {}) : (p.phone_scores || {});
       const firstOffer = Array.isArray(p.offers) ? (p.offers[0] || null) : (p.offers || null);
