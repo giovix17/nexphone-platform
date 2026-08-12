@@ -11,7 +11,7 @@ const Input = z.object({
   priorities: z.record(z.string(), z.number().min(1).max(10)).optional()
 });
 
-export async function POST(request) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const parsed = Input.safeParse(body);
@@ -38,7 +38,7 @@ export async function POST(request) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    const processedPhones = (rawPhones || []).map(p => {
+    const processedPhones = (rawPhones || []).map((p: any) => {
       const scoreObj = Array.isArray(p.phone_scores) ? (p.phone_scores[0] || {}) : (p.phone_scores || {});
       const firstOffer = Array.isArray(p.offers) ? (p.offers[0] || null) : (p.offers || null);
       const price = firstOffer?.price ?? p.price ?? 9999;
@@ -60,13 +60,13 @@ export async function POST(request) {
       };
     });
 
-    const filtered = processedPhones.filter(p => {
+    const filtered = processedPhones.filter((p: any) => {
       if (p.price && p.price > budget * 1.3) return false;
       if (os && os !== 'any' && p.os && p.os.toLowerCase() !== os.toLowerCase()) return false;
       return true;
     });
 
-    filtered.sort((a, b) => {
+    filtered.sort((a: any, b: any) => {
       const scoreA = (a.camera + a.battery + a.performance + a.display) / 4;
       const scoreB = (b.camera + b.battery + b.performance + b.display) / 4;
       return scoreB - scoreA;
@@ -78,7 +78,7 @@ export async function POST(request) {
       results, 
       algorithmVersion: 'v2.0.0-standalone' 
     });
-  } catch (err) {
+  } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
