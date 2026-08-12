@@ -9,13 +9,7 @@ type Result = {
   price: number;
   match: number;
   why: string[];
-  offer: {
-    merchant: string;
-    warrantyMonths: number;
-    official: boolean;
-    updatedAt: string;
-    url: string;
-  };
+  offer: any;
 };
 
 const initial = {
@@ -117,8 +111,8 @@ export default function Home() {
             <div key={phone.id} style={{ border: '1px solid #ddd', padding: 16, borderRadius: 8, marginBottom: 16 }}>
               <h3>{phone.name} ({phone.brand})</h3>
               <p>Match Score: <strong>{phone.match}%</strong></p>
-              <p>Prezzo: <strong>€{phone.price}</strong> ({phone.offer.merchant})</p>
-              <a href={phone.offer.url} target="_blank" rel="noopener noreferrer" style={{ color: 'blue' }}>
+              <p>Prezzo: <strong>€{phone.price}</strong> ({phone.offer?.merchant})</p>
+              <a href={phone.offer?.url} target="_blank" rel="noopener noreferrer" style={{ color: 'blue' }}>
                 Vedi offerta
               </a>
             </div>
