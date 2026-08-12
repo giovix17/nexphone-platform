@@ -3,14 +3,15 @@ import type { Metadata } from 'next';
 
 type PageProps = {
   params: Promise<{
-    intent: string;
-    budget: string;
+    intent?: string;
+    budget?: string;
   }>;
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { intent: rawIntent, budget } = await params;
-  const intent = rawIntent.replaceAll('-', ' ');
+  const resolved = await params;
+  const intent = (resolved?.intent || '').replaceAll('-', ' ');
+  const budget = resolved?.budget || '';
   
   return {
     title: `Migliori smartphone per ${intent} sotto ${budget}€ | Nexphone`,
@@ -19,11 +20,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function Landing({ params }: PageProps) {
-  const { intent: rawIntent, budget } = await params;
-  const intent = rawIntent.replaceAll('-', ' ');
+  const resolved = await params;
+  const intent = (resolved?.intent || '').replaceAll('-', ' ');
+  const budget = resolved?.budget || '';
 
   return (
-    <main style={{ maxWidth: 850, margin: '70px auto', padding: 24 }}>
+    <main style={{ maxWidth: 850, margin: '70px auto', padding: 24, fontFamily: 'sans-serif' }}>
       <p style={{ color: '#0d6b4d', fontWeight: 700 }}>GUIDA PERSONALIZZATA</p>
       <h1>I migliori smartphone per {intent} sotto {budget}€</h1>
       <p>Una selezione aggiornata, con priorità, compromessi e offerte verificate. Imposta il tuo profilo per un ranking davvero personale.</p>
