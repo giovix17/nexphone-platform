@@ -60,13 +60,13 @@ export default function Home() {
         </button>
       </nav>
 
-      <section className="hero" style={{ marginBottom: 32 }}>
+      <section style={{ marginBottom: 32 }}>
         <p style={{ fontSize: 14, color: '#666' }}>CONSIGLI COSTRUITI INTORNO A TE</p>
         <h1 style={{ fontSize: 32, margin: '8px 0' }}>Lo smartphone giusto. <em>Per te.</em></h1>
         <span>Modifica una preferenza e il ranking si aggiorna senza ricominciare.</span>
       </section>
 
-      <section className="workspace" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 24 }}>
+      <section style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 24 }}>
         <aside style={{ background: '#f9f9f9', padding: 16, borderRadius: 8 }}>
           <h2>Il tuo profilo</h2>
           <label style={{ display: 'block', margin: '16px 0' }}>
@@ -82,7 +82,7 @@ export default function Home() {
             />
           </label>
 
-          <div className="choices" style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
             {(['any', 'Android', 'iOS'] as const).map(x => (
               <button
                 key={x}
@@ -101,7 +101,7 @@ export default function Home() {
             ))}
           </div>
 
-          <label className="toggle" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <input
               type="checkbox"
               checked={answers.refurbished}

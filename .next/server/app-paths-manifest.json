@@ -1,8 +1,3 @@
 {
-  "/api/recommend/route": "app/api/recommend/route.js",
-  "/api/click/route": "app/api/click/route.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js",
-  "/migliori-smartphone-per-[intent]-sotto-[budget]-euro/page": "app/migliori-smartphone-per-[intent]-sotto-[budget]-euro/page.js",
-  "/smartphone/[slug]/page": "app/smartphone/[slug]/page.js"
+  "/page": "app/page.js"
 }
