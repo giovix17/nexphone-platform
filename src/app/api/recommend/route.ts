@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import {NextRequest,NextResponse} from 'next/server';
 import {z} from 'zod';import {unstable_cache} from 'next/cache';import {supabase} from '@/lib/supabase';import {recommend} from '@/lib/recommendation';
 const Input=z.object({budget:z.number().min(200).max(3000),os:z.enum(['Android','iOS','any']),size:z.enum(['compact','large','any']),refurbished:z.boolean(),priorities:z.record(z.string(),z.number().min(1).max(10))});

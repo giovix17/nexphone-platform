@@ -1,20 +1,54 @@
 {
   "pages": {
-    "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+    "/_not-found/page": [
+      "static/chunks/webpack-9b1881fda15d01ff.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-87552e6e05b8e3aa.js",
+      "static/chunks/main-app-55a45b8baa190363.js",
+      "static/chunks/app/_not-found/page-d550f826764ed820.js"
     ],
     "/api/recommend/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/recommend/route.js"
+      "static/chunks/webpack-9b1881fda15d01ff.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-87552e6e05b8e3aa.js",
+      "static/chunks/main-app-55a45b8baa190363.js",
+      "static/chunks/app/api/recommend/route-886482106ef84b04.js"
+    ],
+    "/api/click/route": [
+      "static/chunks/webpack-9b1881fda15d01ff.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-87552e6e05b8e3aa.js",
+      "static/chunks/main-app-55a45b8baa190363.js",
+      "static/chunks/app/api/click/route-886482106ef84b04.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-9b1881fda15d01ff.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-87552e6e05b8e3aa.js",
+      "static/chunks/main-app-55a45b8baa190363.js",
+      "static/css/8c979157ccc8fe79.css",
+      "static/chunks/app/layout-ea5adcaa9f8fda5d.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-9b1881fda15d01ff.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-87552e6e05b8e3aa.js",
+      "static/chunks/main-app-55a45b8baa190363.js",
+      "static/chunks/app/page-5747333268158e1c.js"
+    ],
+    "/migliori-smartphone-per-[intent]-sotto-[budget]-euro/page": [
+      "static/chunks/webpack-9b1881fda15d01ff.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-87552e6e05b8e3aa.js",
+      "static/chunks/main-app-55a45b8baa190363.js",
+      "static/chunks/app/migliori-smartphone-per-[intent]-sotto-[budget]-euro/page-886482106ef84b04.js"
+    ],
+    "/smartphone/[slug]/page": [
+      "static/chunks/webpack-9b1881fda15d01ff.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-87552e6e05b8e3aa.js",
+      "static/chunks/main-app-55a45b8baa190363.js",
+      "static/chunks/app/smartphone/[slug]/page-886482106ef84b04.js"
     ]
   }
 }
