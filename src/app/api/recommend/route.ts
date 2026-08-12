@@ -11,7 +11,7 @@ const Input = z.object({
   priorities: z.record(z.string(), z.number().min(1).max(10)).optional()
 });
 
-export async function POST(request: NextRequest) {
+export async function POST(request) {
   try {
     const body = await request.json();
     const parsed = Input.safeParse(body);
@@ -22,7 +22,6 @@ export async function POST(request: NextRequest) {
 
     const { budget, os } = parsed.data;
 
-    // Interroghiamo la tabella principale con le relazioni
     const { data: rawPhones, error } = await supabase
       .from('phones')
       .select(`
@@ -36,11 +35,10 @@ export async function POST(request: NextRequest) {
       .eq('is_active', true);
 
     if (error) {
-      console.error("Errore Supabase:", error);
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    // Normalizzazione e protezione totale di ogni campo
+    // Creazione oggetti ultra-sicura
     const processedPhones = (rawPhones || []).map(p => {
       const scoreObj = Array.isArray(p.phone_scores) ? (p.phone_scores[0] || {}) : (p.phone_scores || {});
       const firstOffer = Array.isArray(p.offers) ? (p.offers[0] || null) : (p.offers || null);
@@ -63,14 +61,12 @@ export async function POST(request: NextRequest) {
       };
     });
 
-    // Filtraggio intelligente in base alle preferenze dell'utente
     const filtered = processedPhones.filter(p => {
       if (p.price && p.price > budget * 1.3) return false;
       if (os && os !== 'any' && p.os && p.os.toLowerCase() !== os.toLowerCase()) return false;
       return true;
     });
 
-    // Ordinamento per qualità complessiva
     filtered.sort((a, b) => {
       const scoreA = (a.camera + a.battery + a.performance + a.display) / 4;
       const scoreB = (b.camera + b.battery + b.performance + b.display) / 4;
@@ -84,7 +80,6 @@ export async function POST(request: NextRequest) {
       algorithmVersion: 'v2.0.0-standalone' 
     });
   } catch (err) {
-    console.error("ERRORE CRITICO NELLA ROUTE:", err);
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
