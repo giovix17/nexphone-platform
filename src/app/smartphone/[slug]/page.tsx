@@ -1,13 +1,11 @@
 import { supabase } from '@/lib/supabase';
 import { notFound } from 'next/navigation';
 
-type PageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
-
-export default async function ProductPage({ params }: PageProps) {
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
 
   const { data } = await supabase
@@ -28,14 +26,14 @@ export default async function ProductPage({ params }: PageProps) {
       priceCurrency: 'EUR',
       price: data.price,
       availability: 'https://schema.org/InStock',
-      url: data.offer.url
+      url: data.offer.url,
     },
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: String((data.camera + data.battery + data.software) / 3 / 20),
       bestRating: '5',
-      ratingCount: '24'
-    }
+      ratingCount: '24',
+    },
   };
 
   return (
@@ -47,7 +45,9 @@ export default async function ProductPage({ params }: PageProps) {
       <p>SMARTPHONE</p>
       <h1>{data.name}</h1>
       <p>Match, specifiche, prezzo e offerte affidabili. Il nostro giudizio distingue i punti forti dai compromessi.</p>
-      <p><strong>Da €{data.price}</strong> · {data.offer.merchant} · {data.offer.warrantyMonths} mesi di garanzia</p>
+      <p>
+        <strong>Da €{data.price}</strong> · {data.offer.merchant} · {data.offer.warrantyMonths} mesi di garanzia
+      </p>
     </main>
   );
 }
